@@ -44,7 +44,7 @@ class MagicCube(object):
                     tempLines.append(tempLine)
         for neighborIndex in range(4):
             neighbor = neighbors[neighborIndex]
-            if(reverse):
+            if(not reverse):
                 tempLine = tempLines[(neighborIndex-1)%4]
             else:
                 tempLine = tempLines[(neighborIndex+1)%4]
