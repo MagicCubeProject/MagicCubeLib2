@@ -25,3 +25,9 @@ class TestMagicCube(TestCase):
 
         mc.rotate(Facet.FRONT)
         pass
+
+    def test_rotate(self):
+        mc=MagicCube()
+        mc.rotate(Facet.FRONT)
+        print(10*"_-")
+        print(len(str(mc)))

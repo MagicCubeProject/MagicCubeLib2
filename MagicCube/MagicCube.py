@@ -4,27 +4,6 @@ from MagicFacet.MagicFacet import MagicFacet
 
 
 class MagicCube(object):
-    rotateMap = {
-        Facet.FRONT : {
-            (Facet.UP,0):(Facet.RIGHT,CellPosition.SOUTH_WEST),
-            (Facet.UP,CellPosition.SOUTH_WEST):(Facet.RIGHT,CellPosition.SOUTH_EAST),
-
-            (Facet.RIGHT,CellPosition.SOUTH_WEST):(Facet.DOWN,CellPosition.NORTH_WEST),
-            (Facet.RIGHT,CellPosition.SOUTH):(Facet.DOWN,CellPosition.WEST),
-            (Facet.RIGHT,CellPosition.SOUTH_EAST):(Facet.DOWN,CellPosition.SOUTH_WEST),
-
-            (Facet.DOWN,CellPosition.NORTH_WEST):(Facet.LEFT,CellPosition.NORTH_EAST),
-            (Facet.DOWN,CellPosition.WEST):(Facet.LEFT,CellPosition.NORTH),
-            (Facet.DOWN,CellPosition.SOUTH_WEST):(Facet.LEFT,CellPosition.NORTH_WEST),
-
-            (Facet.LEFT,CellPosition.NORTH_EAST):(Facet.UP,CellPosition.NORTH_WEST),
-            (Facet.LEFT,CellPosition.NORTH):(Facet.UP,CellPosition.WEST),
-            (Facet.LEFT,CellPosition.NORTH_WEST):(Facet.UP,CellPosition.SOUTH_WEST),
-        }
-    }
-
-
-
     def __init__(self,numeric:str=None):
         self.magicFacets = list()
         if numeric is None:
@@ -79,11 +58,15 @@ class MagicCube(object):
         self[facet].rotate(reverse)
         self.rotateLie(facet,reverse)
 
-    def distances(self):
+    def positionaldistances(self):
         distancesList =list()
         for facet in Facet:
             tempDistances = self[facet].distances()
             soertedDistances = sorted(tempDistances)
             distancesList.append(soertedDistances)
+        return distancesList
+
+    def distances(self):
+        distancesList = self.positionaldistances()
         sortedDistancesList = sorted(distancesList)
         return sortedDistancesList
