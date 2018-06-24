@@ -48,8 +48,17 @@ class MagicCell(object):
                     x_distance+=3
                     y_distance+=1
             elif self.position.isCorner():
-                x_distance+=10
-                y_distance+=10
+                leftNeighborInex = int((self.position.left.value-1)/2)
+                leftNeighbor = self.facet.neighbors()[leftNeighborInex]
+
+                rightNeighborInex = int((self.position.right.value-1)/2)
+                rightNeighbor = self.facet.neighbors()[rightNeighborInex]
+                if leftNeighbor is self.value or rightNeighbor is self.value:
+                    x_distance+=2
+                    y_distance+=1
+                else:
+                    x_distance+=4
+                    y_distance+=1
         distance_value:int=x_distance**2+y_distance**2
         return distance_value
     # def distance(self):
