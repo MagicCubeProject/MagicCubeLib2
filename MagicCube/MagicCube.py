@@ -33,7 +33,6 @@ class MagicCube(object):
         tempLines = list()
         neighbors = self[facet].value.neighbors()
         for neighbor in neighbors:
-            print(neighbor)
             secondaryNeighbors = neighbor.neighbors()
             for secondaryNeighborIndex in range(4):
                 secondaryNeighbor = secondaryNeighbors[secondaryNeighborIndex]
